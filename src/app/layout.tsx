@@ -15,8 +15,8 @@ export default async function RootLayout({
 }) {
 
   return (
-    <html lang="pt-br">
-      <body>
+    <html lang="pt-BR">
+      <body className="dark:bg-zinc-900 bg-zinc-200">
         <Providers>{children}</Providers>
       </body>
     </html>
