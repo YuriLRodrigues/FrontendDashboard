@@ -5,14 +5,17 @@ import { ThemeProvider as NextThemeProvider } from "next-themes";
 import { QueryClientProvider } from "react-query";
 import { queryClient } from "@/client/queryClient";
 import { SidebarProvider } from "@/context/SidebarContext";
+import { ModalProvider } from "@/context/ModalIsOpen";
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <NextThemeProvider>
       <SidebarProvider>
-        <QueryClientProvider client={queryClient}>
-          <SessionProvider>{children}</SessionProvider>
-        </QueryClientProvider>
+        <ModalProvider>
+          <QueryClientProvider client={queryClient}>
+            <SessionProvider>{children}</SessionProvider>
+          </QueryClientProvider>
+        </ModalProvider>
       </SidebarProvider>
     </NextThemeProvider>
   );
