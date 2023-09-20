@@ -15,9 +15,9 @@ export default function SideBar() {
     <aside
       className={`h-screen duration-500 ${
         isOpenAside
-          ? "md:w-60 w-44 translate-x-0 md:relative z-10"
+          ? "md:w-60 w-44 translate-x-0 md:relative"
           : "md:relative md:translate-x-0 -translate-x-20 w-12 md:w-18"
-      }  dark:bg-neutral-700 md:float-left bg-zinc-100 dark:text-white flex flex-col gap-8 px-2 absolute`}
+      }  dark:bg-zinc-950 md:float-left z-10 bg-zinc-100 dark:text-white flex flex-col gap-8 px-2 absolute`}
     >
       <div
         className={`flex relative text-center mb-6 mt-3 items-center ${
