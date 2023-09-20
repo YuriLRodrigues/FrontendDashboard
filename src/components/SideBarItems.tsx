@@ -30,7 +30,7 @@ export default function SideBarItems({
         </h3>
       </Link>
       {!isOpen && (
-        <div className="absolute left-full rounded-md px-2 py-1 ml-6 dark:bg-white text-purple-600 text-sm invisible opacity-20 top-0 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 font-semibold">
+        <div className="absolute z-[1000] left-full rounded-md px-2 py-1 ml-6 dark:bg-white bg-zinc-200 text-purple-600 text-sm invisible opacity-20 top-0 -translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 font-semibold">
           {name}
         </div>
       )}
