@@ -10,13 +10,15 @@ import { ModalProvider } from "@/context/ModalIsOpen";
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <NextThemeProvider>
+      <SessionProvider>
       <SidebarProvider>
         <ModalProvider>
           <QueryClientProvider client={queryClient}>
-            <SessionProvider>{children}</SessionProvider>
+            {children}
           </QueryClientProvider>
         </ModalProvider>
       </SidebarProvider>
+      </SessionProvider>
     </NextThemeProvider>
   );
 }

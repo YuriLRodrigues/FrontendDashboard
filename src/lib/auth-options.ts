@@ -1,21 +1,17 @@
 import { NextAuthOptions } from "next-auth";
-import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
-import {UserCurrent} from '@/types/user-current'
+import { UserCurrent } from "@/types/user-current";
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    GithubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-    }),
     CredentialsProvider({
       name: "credentials",
       credentials: {
         email: { label: "E-mail", type: "email" },
         password: { label: "password", type: "password" },
       },
-      async authorize(credentials, req): Promise<UserCurrent> {
+      async authorize(credentials, req): Promise<any> {
+        console.log("authorize", credentials)
         const response = await fetch(
           "https://backend-dashboard-opal.vercel.app/signin",
           {
@@ -23,40 +19,26 @@ export const authOptions: NextAuthOptions = {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              email: credentials?.email,
-              password: credentials?.password,
-            }),
+            body: JSON.stringify(credentials),
           }
         );
-        
+        console.log(response);
         if (!response.ok) {
-          throw new Error("User not found")
+          return null
         }
         const user = await response.json();
 
         if (!user) {
-          throw new Error("User not found")
-        }
+          return null
 
+        }
+        console.log(user);
         return user;
+        
       },
     }),
   ],
   callbacks: {
-    async signIn({ user }) {
-      if (user) {
-        return true
-      }
-      return false
-    },
-
-    async redirect({ url, baseUrl }) {
-      if (url.startsWith(baseUrl)) return url
-      else if (url.startsWith('/')) return new URL(url, baseUrl).toString()
-      return baseUrl
-    },
-
     async session({ session, token }) {
       if (token) {
         session = {
@@ -68,24 +50,25 @@ export const authOptions: NextAuthOptions = {
             balance: token.balance,
             token: token.token,
             email: token.email,
-            userAccess: token.userAccess as Array<{ Access: { name: string } }>
-          }
-        }
+            userAccess: token.userAccess as Array<{ Access: { name: string } }>,
+          },
+        };
       }
-      return session
+      return session;
     },
 
     async jwt({ token, user }) {
+      console.log(user, token);
       if (user) {
-        token.id = user.id
-        token.name = user.name
-        token.email = user.email
-        token.token = user.token
-        token.balance = user.balance
-        token.userAccess = user.userAccess
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.token = user.token;
+        token.balance = user.balance;
+        token.userAccess = user.userAccess;
       }
-      
-      return token
+
+      return token;
     },
   },
   jwt: {

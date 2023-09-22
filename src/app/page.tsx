@@ -4,40 +4,37 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { errorNotification, successNotification } from "@/utils/notications";
-
 import { loginTypeForm } from "@/types/loginForm";
 import { useLogin } from "@/hooks/useLogin";
 import { signIn, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function Login() {
-  const {data: session} = useSession({
-    required: false,
-  })
+  const { data: session } = useSession();
 
-  {session && redirect("/dashboard")}
+  {
+    session && redirect("/dashboard");
+  }
 
   const { errors, handleSubmit, register, isSubmitting, reset } = useLogin();
   const [showPassword, setShowPassword] = useState<string>("password");
 
   const handleLogin = async (data: loginTypeForm) => {
-
-    const res = await signIn<"credentials">("credentials", {
+    const res = await signIn("credentials", {
       redirect: false,
-      ...data
-    })
+      ...data,
+    });
+    console.log(data);
+    console.log(res);
+    // redirect("/register");
+    // if (!res?.error) {
+    //   reset();
+    //   successNotification("Login concluído");
 
-    if (!res?.error) {
-      reset()
-      successNotification("Login concluído");
-      setTimeout(() => {
-        return redirect('/dashboard')
-      }, 3000)
-    }
-
-    errorNotification("Usuário não encontrado ou credenciais incorretas")
-
+    //   return redirect("/dashboard");
+    // }
+    // errorNotification("Usuário não encontrado ou credenciais incorretas");
   };
 
   return (
@@ -90,11 +87,18 @@ export default function Login() {
             </p>
           )}
         </div>
-        <p className="pt-4 flex gap-2 text-white">Não possui uma conta ? <Link className="underline decoration-white" href={"/register"}>Registrar</Link></p>
+        <p className="pt-4 flex gap-2 text-white">
+          Não possui uma conta ?{" "}
+          <Link className="underline decoration-white" href={"/register"}>
+            Registrar
+          </Link>
+        </p>
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`${isSubmitting && "cursor-not-allowed"} text-black rounded-lg p-2 my-7 text-center bg-white hover:-translate-y-1 duration-500 shadow-sm shadow-zinc-300 w-28`}
+          className={`${
+            isSubmitting && "cursor-not-allowed"
+          } text-black rounded-lg p-2 my-7 text-center bg-white hover:-translate-y-1 duration-500 shadow-sm shadow-zinc-300 w-28`}
         >
           {isSubmitting ? "Logando..." : "Login"}
         </button>

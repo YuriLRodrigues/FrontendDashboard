@@ -41,14 +41,10 @@ export default function TransactionModal() {
     if (data.transation === "saída") {
       try {
         const res = await fetch(
-          "https://backend-dashboard-opal.vercel.app/newexpense",
+          "/api/newexpense",
           {
             method: "POST",
             body: JSON.stringify(data),
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${session?.user.token}`,
-            },
           }
         );
         if (res.ok) {
@@ -67,7 +63,7 @@ export default function TransactionModal() {
 
     try {
       const res = await fetch(
-        "http://localhost:8080/newdeposit",
+        "/api/newdeposit",
         {
           method: "POST",
           body: JSON.stringify(data),
