@@ -11,12 +11,13 @@ import { useSession } from "next-auth/react";
 
 export default function TransactionModal() {
   const { modalIsOpen, setModalIsOpen } = useModalOpen();
-  const { errors, handleSubmit, isDirty, isSubmitting, register, reset } = useModalTransaction();
+  const { handleSubmit, isDirty, isSubmitting, register, reset } = useModalTransaction();
   const { data: session } = useSession();
+  
   const modalRef: any = useRef();
   const closeBtnRef: any = useRef();
-  const [transitionType, setTransitionType] = useState<string>("");
-  const [paymentType, setPaymentType] = useState<string>("");
+  const [transitionType, setTransitionType] = useState<string>("entrada");
+  const [paymentType, setPaymentType] = useState<string>("credit");
 
   const closeBtnModal = () => {
     setTransitionType("entrada");
@@ -41,7 +42,7 @@ export default function TransactionModal() {
     if (data.transation === "saída") {
       try {
         const res = await fetch(
-          "/api/newexpense",
+          "http://localhost:8080/newexpense",
           {
             method: "POST",
             body: JSON.stringify(data),
@@ -63,14 +64,10 @@ export default function TransactionModal() {
 
     try {
       const res = await fetch(
-        "/api/newdeposit",
+        "http://localhost:8080/newdeposit",
         {
           method: "POST",
           body: JSON.stringify(data),
-          headers: {
-            Authorization: `Bearer ${session?.user.token}`,
-            "Content-Type": "application/json",
-          },
         }
       );
       if (res.ok) {
