@@ -10,7 +10,7 @@ export const authOptions: NextAuthOptions = {
         email: { label: "E-mail", type: "email" },
         password: { label: "password", type: "password" },
       },
-      async authorize(credentials, req): Promise<any> {
+      async authorize(credentials, req): Promise<UserCurrent> {
         console.log("authorize", credentials)
         const response = await fetch(
           "https://backend-dashboard-opal.vercel.app/signin",
@@ -22,19 +22,15 @@ export const authOptions: NextAuthOptions = {
             body: JSON.stringify(credentials),
           }
         );
-        console.log(response);
         if (!response.ok) {
-          return null
+          throw new Error("User not found")
         }
         const user = await response.json();
 
         if (!user) {
-          return null
-
+          throw new Error("User not found")
         }
-        console.log(user);
         return user;
-        
       },
     }),
   ],
@@ -67,7 +63,6 @@ export const authOptions: NextAuthOptions = {
         token.balance = user.balance;
         token.userAccess = user.userAccess;
       }
-
       return token;
     },
   },
