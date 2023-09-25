@@ -8,14 +8,13 @@ import { loginTypeForm } from "@/types/loginForm";
 import { useLogin } from "@/hooks/useLogin";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const { data: session } = useSession();
-
-  {
-    session && redirect("/dashboard");
-  }
+  const route = useRouter()
+  
+  session && route.push("/dashboard"); 
 
   const { errors, handleSubmit, register, isSubmitting, reset } = useLogin();
   const [showPassword, setShowPassword] = useState<string>("password");
@@ -25,16 +24,13 @@ export default function Login() {
       redirect: false,
       ...data,
     });
-    console.log(data);
-    console.log(res);
-    // redirect("/register");
-    // if (!res?.error) {
-    //   reset();
-    //   successNotification("Login concluído");
+    if (!res?.error) {
+      reset();
+      successNotification("Login concluído");
 
-    //   return redirect("/dashboard");
-    // }
-    // errorNotification("Usuário não encontrado ou credenciais incorretas");
+      return route.push("/dashboard");
+    }
+    errorNotification("Usuário não encontrado ou credenciais incorretas");
   };
 
   return (

@@ -10,6 +10,10 @@ const config: Config = {
     transparent: "transparent",
     current: "currentColor",
     extend: {
+      gridTemplateColumns: {
+        'auto-fit-100': 'repeat(auto-fit, minmax(100px, 1fr))',
+        'auto-fit-300': 'repeat(auto-fit, minmax(300px, 1fr))',
+      },
       backgroundImage: {
         'login': "url('/img/login-bg.png')",
         'register': "url('/img/register-bg.png')",

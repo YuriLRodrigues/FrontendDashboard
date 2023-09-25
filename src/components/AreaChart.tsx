@@ -61,7 +61,7 @@ export default async function FinancesDash() {
   console.log(data)
   
   return (
-    <div className="grid p-4">
+    <section className="grid p-4 auto-fit-300">
       <Card>
         <Title>Total valores de entradas</Title>
         <AreaChart
@@ -73,6 +73,39 @@ export default async function FinancesDash() {
           // valueFormatter={dataFormatter}
         />
       </Card>
-    </div>
+      <Card>
+        <Title>Total valores de entradas</Title>
+        <AreaChart
+          className="h-72 mt-4"
+          data={data}
+          index="date"
+          categories={["valor"]}
+          colors={["indigo", "cyan"]}
+          // valueFormatter={dataFormatter}
+        />
+      </Card>
+      <Card>
+        <Title>Total valores de entradas</Title>
+        <AreaChart
+          className="h-72 mt-4"
+          data={data}
+          index="date"
+          categories={["valor"]}
+          colors={["indigo", "cyan"]}
+          // valueFormatter={dataFormatter}
+        />
+      </Card>
+      <Card>
+        <Title>Total valores de entradas</Title>
+        <AreaChart
+          className="h-72 mt-4"
+          data={data}
+          index="date"
+          categories={["valor"]}
+          colors={["indigo", "cyan"]}
+          // valueFormatter={dataFormatter}
+        />
+      </Card>
+    </section>
   );
 }
