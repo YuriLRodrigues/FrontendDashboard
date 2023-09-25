@@ -11,7 +11,6 @@ export const authOptions: NextAuthOptions = {
         password: { label: "password", type: "password" },
       },
       async authorize(credentials, req): Promise<UserCurrent> {
-        console.log("authorize", credentials)
         const response = await fetch(
           "https://backend-dashboard-opal.vercel.app/signin",
           {
@@ -54,7 +53,6 @@ export const authOptions: NextAuthOptions = {
     },
 
     async jwt({ token, user }) {
-      console.log(user, token);
       if (user) {
         token.id = user.id;
         token.name = user.name;
