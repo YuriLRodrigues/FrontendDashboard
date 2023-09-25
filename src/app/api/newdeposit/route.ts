@@ -5,8 +5,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
   const token = session?.user.token;
-  
-  console.log(token)
+  console.log(await req.json());
 
   try {
     const res = await fetch(
@@ -20,9 +19,9 @@ export async function POST(req: Request) {
         },
       }
     );
-    console.log(res)
     const expense = await res.json();
-    console.log(expense)
+    console.log(res);
+    console.log(expense);
     NextResponse.json(expense);
   } catch (error) {
     NextResponse.json({ error: "Erro ao fazer um novo depósito" });

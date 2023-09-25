@@ -19,7 +19,6 @@ export async function POST(req: Request) {
       }
     );
     const expense = await res.json();
-    console.log(expense)
     NextResponse.json(expense);
   } catch (error) {
     NextResponse.json({ error: "A finança não pode ser criada" });
