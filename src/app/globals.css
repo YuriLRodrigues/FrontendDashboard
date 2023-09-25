@@ -19,3 +19,6 @@
 .form-gradient {
   background: linear-gradient(45deg, rgba(161,162,171,1) 5%, rgba(115,115,115,1) 23%, rgba(0,0,0,1) 100%, rgba(59,63,64,1) 100%);
 }
+.grid-150 {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+}
