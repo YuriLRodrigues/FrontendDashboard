@@ -1,10 +1,11 @@
 "use client";
 import { useSidebarContext } from "@/context/SidebarContext";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { RiMenuUnfoldLine } from "react-icons/ri";
 import ToggleTheme from "./Theme";
 import { TransactionModalButton } from "./TransactionModalButton";
 import { MdOutlineNotifications } from "react-icons/md";
+import { PiSignOutBold } from "react-icons/pi";
 
 export default function Header() {
   const { data: session } = useSession();
@@ -30,8 +31,15 @@ export default function Header() {
         )}
       </div>
       <div className="flex gap-4 items-center">
-
-      <span className="text-xl font-semibold rounded-full cursor-pointer p-1 hover:bg-zinc-400/10"><MdOutlineNotifications /></span>
+        <button
+          onClick={() => signOut()}
+          className="text-xl font-semibold rounded-full cursor-pointer p-1 hover:bg-zinc-400/10"
+        >
+          <PiSignOutBold />
+        </button>
+        <span className="text-xl font-semibold rounded-full cursor-pointer p-1 hover:bg-zinc-400/10">
+          <MdOutlineNotifications />
+        </span>
         <ToggleTheme />
         <TransactionModalButton />
       </div>
