@@ -12,7 +12,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials, req): Promise<UserCurrent> {
         const response = await fetch(
-          "https://backend-dashboard-opal.vercel.app/signin",
+          "https://backend-dashboard-gold.vercel.app/signin",
           {
             method: "POST",
             headers: {
