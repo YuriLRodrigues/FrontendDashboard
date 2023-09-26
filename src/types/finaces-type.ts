@@ -22,3 +22,14 @@ export type Date = {
   title: string,
   valor: number
 }
+
+export type DashboardEntriesType = {
+  date: string;
+  title: string;
+  valor: number;
+};
+export type DashboardExitsType = {
+  date: string;
+  title: string;
+  valor: number;
+};
