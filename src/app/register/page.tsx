@@ -99,7 +99,7 @@ export default function Register() {
           autoComplete="off"
           type="text"
           {...register("cpf")}
-          placeholder="CPF"
+          placeholder="CPF (123.456.789-00)"
           className={`mt-6 w-8/12 border-b-2 border-zinc-400 text-white placeholder:text-zinc-400 px-2 outline-none bg-transparent my-1 ${
             errors.cpf?.message &&
             "text-red-500 placeholder:text-red-500 border-red-500"
