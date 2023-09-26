@@ -26,10 +26,7 @@ O Flow Dashboard oferece um modal de transações dinâmicas que permite aos usu
 <div style="display:flex;gap:10px">
   <img width=40 src="https://www.datocms-assets.com/75941/1657707878-nextjs_logo.png" alt="NextJS" />
   <img width=40 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/512px-Typescript_logo_2020.svg.png" alt="" />
-  <!-- <img width=80 src="https://miro.medium.com/v2/resize:fit:1400/1*2W1quxolV-_crLyDtbb6Tw.png" alt="Zod" /> -->
-  <!-- <img width=40 src="https://react-hook-form.com/images/logo/react-hook-form-logo-only.png" alt="HookForm" /> -->
   <img width=60 src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1200px-Tailwind_CSS_Logo.svg.png" alt="" />
-  <!-- <img width=40 src="https://miro.medium.com/v2/resize:fit:327/1*oLvPAqketvcwKRALKcFXyQ.png" alt="NextAuth" /> -->
 </div>
 
 <h3>Bibliotecas</h3>
@@ -42,3 +39,6 @@ O Flow Dashboard oferece um modal de transações dinâmicas que permite aos usu
   <li>React Icons</li>
   <li>Toastify</li>
 </ul>
+
+<h3>Depoly:</h3>
+https://finance-flow-dashboard.vercel.app/
