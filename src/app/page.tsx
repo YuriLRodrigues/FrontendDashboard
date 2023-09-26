@@ -12,9 +12,9 @@ import { useRouter } from "next/navigation";
 
 export default function Login() {
   const { data: session } = useSession();
-  const route = useRouter()
-  
-  session && route.push("/dashboard"); 
+  const route = useRouter();
+
+  session && route.push("/dashboard");
 
   const { errors, handleSubmit, register, isSubmitting, reset } = useLogin();
   const [showPassword, setShowPassword] = useState<string>("password");
@@ -26,10 +26,13 @@ export default function Login() {
     });
     if (!res?.error) {
       reset();
-      successNotification("Login concluído");
 
-      return route.push("/dashboard");
+      successNotification("Login feito com sucesso");
+
+      route.push("/");
+
     }
+
     errorNotification("Usuário não encontrado ou credenciais incorretas");
   };
 
