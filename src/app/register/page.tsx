@@ -7,16 +7,17 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { errorNotification, successNotification } from "@/utils/notications";
 import { registerTypeForm } from "@/types/registerForm";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 export default function Register() {
 
+  const route = useRouter()
   const {data: session} = useSession({
     required: false
   })
-  {session && redirect("/dashboard")}
+  {session && route.push("/dashboard")}
 
   const { errors, handleSubmit, register, isSubmitting, reset } = useRegister();
   const [showPassword, setShowPassword] = useState<string>("password");
@@ -43,7 +44,7 @@ export default function Register() {
       
       successNotification("Usuário cadastrado com sucesso");
       return setTimeout(() => {
-        redirect('/')
+        route.push('/')
       }, 3000)
     }
 
