@@ -44,19 +44,19 @@ export default function SideBar() {
         />
         <SideBarItems
           icon={<MdLeaderboard size={20} />}
-          pathName={"/dashboard/statistics"}
+          pathName={"/dashboard"}
           name={"statistics"}
           isOpen={isOpenAside}
         />
         <SideBarItems
           icon={<BiUserCircle />}
-          pathName={"/dashboard/user"}
+          pathName={"/dashboard"}
           name={"user"}
           isOpen={isOpenAside}
         />
         <SideBarItems
           icon={<FaMoneyBillTransfer />}
-          pathName={"/dashboard/transactions"}
+          pathName={"/dashboard"}
           name={"transactions"}
           isOpen={isOpenAside}
         />

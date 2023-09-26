@@ -7,9 +7,9 @@ export default function ToggleTheme() {
 
   return (
     <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      {theme === "light" ? <BsFillSunFill /> : <BsMoonStarsFill />}
+      {theme === "dark" ? <BsFillSunFill /> : <BsMoonStarsFill />}
     </button>
   );
 }
