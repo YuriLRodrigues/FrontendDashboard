@@ -12,7 +12,8 @@ Para garantir a segurança e a integridade dos dados, os usuários só podem ace
 <h3>Formulários Avançados</h3>
 O Flow Dashboard utiliza o React Hook Form e o Zod para criar formulários avançados. Isso permite a validação eficaz de senhas e outros dados do usuário, garantindo a integridade das informações inseridas.
 
-Personalização de Temas
+
+<h3>Personalização de Temas</h3>
 Os usuários têm a opção de personalizar o tema do Flow Dashboard de acordo com suas preferências. Isso é possível graças à integração do Next Themes, permitindo que cada usuário escolha seu tema de preferência.
 
 <h3>Modal de Transações Dinâmicas</h3>
