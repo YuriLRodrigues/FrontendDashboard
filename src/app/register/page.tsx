@@ -28,7 +28,7 @@ export default function Register() {
     const userData = {...data, accessName: "user"}
 
     const createdUser = await fetch(
-      "https://backend-dashboard-opal.vercel.app/user",
+      "https://backend-dashboard-gold.vercel.app/user",
       {
         method: "POST",
         headers: {
