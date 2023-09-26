@@ -42,10 +42,14 @@ export default function TransactionModal() {
     if (data.transation === "saída") {
       try {
         const res = await fetch(
-          "http://localhost:8080/newexpense",
+          "https://backend-dashboard-gold.vercel.app/newexpense",
           {
             method: "POST",
             body: JSON.stringify(data),
+            headers: {
+              Authorization: `Bearer ${session?.user.token}`,
+              "Content-Type": "application/json",
+            },
           }
         );
         if (res.ok) {
@@ -64,10 +68,14 @@ export default function TransactionModal() {
 
     try {
       const res = await fetch(
-        "http://localhost:8080/newdeposit",
+        "https://backend-dashboard-gold.vercel.app/newdeposit",
         {
           method: "POST",
           body: JSON.stringify(data),
+          headers: {
+            Authorization: `Bearer ${session?.user.token}`,
+            "Content-Type": "application/json",
+          },
         }
       );
       if (res.ok) {
